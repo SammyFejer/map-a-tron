@@ -1,5 +1,7 @@
 from django.urls import include, re_path
-import TheBigCheese.views
+from TheBigCheese import views
+from django.conf import settings
+from django.conf.urls.static import static
 """
 map_a_tron URL Configuration
 
@@ -19,11 +21,11 @@ Including another URLconf
 """
 
 # Uncomment next two lines to enable admin:
-#from django.contrib import admin
-#from django.urls import path
+from django.contrib import admin
+from django.urls import path
 
 urlpatterns = [
     # Uncomment the next line to enable the admin:
-    #path('admin/', admin.site.urls)
-    re_path(r'^$', HelloDjangoApp.views.index, name='index'),
+    path('admin/', admin.site.urls),
+        path('', views.index, name='index'),
 ]
