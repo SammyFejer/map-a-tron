@@ -4,6 +4,7 @@
     <Name>map-a-tron</Name>
     <RootNamespace>map-a-tron</RootNamespace>
     <InterpreterId>Global|PythonCore|3.14</InterpreterId>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
