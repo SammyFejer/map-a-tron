@@ -2,6 +2,7 @@ from django.urls import include, re_path
 from TheBigCheese import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 """
 map_a_tron URL Configuration
 
@@ -28,4 +29,5 @@ urlpatterns = [
     # Uncomment the next line to enable the admin:
     path('admin/', admin.site.urls),
         path('', views.index, name='index'),
+        path('hello-vite/', TemplateView.as_view(template_name='hello_vite.html'))
 ]

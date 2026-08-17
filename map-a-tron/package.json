@@ -1,0 +1,22 @@
+{
+    "name": "map-a-tron",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "vite build"
+
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "dependencies": {
+        "ol": "^10.10.0"
+    },
+    "devDependencies": {
+        "eslint": "^10.8.1",
+        "vite": "^8.2.1"
+    }
+}
