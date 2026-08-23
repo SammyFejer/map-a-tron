@@ -1,16 +1,12 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
+{% load django_vite %}
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quick Start</title>
+    <title>Getting Started with Django and Vite</title>
+    {% vite_hmr_client %}
 </head>
-{% load static %}
+<div id="map"></div>
 <body>
-    <div id="map"></div>
-    <script type="module" src="{% static 'js/main.js' %}"></script>
+    {% vite_asset 'assets/main.js' %}
 </body>
 </html>
 

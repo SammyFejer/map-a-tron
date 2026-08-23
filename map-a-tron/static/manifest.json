@@ -1,8 +1,27 @@
 {
+  "_rolldown-runtime-D2aABDIb.js": {
+    "file": "assets/rolldown-runtime-D2aABDIb.js",
+    "name": "rolldown-runtime"
+  },
   "assets/index.js": {
     "file": "js/index-bundle.js",
     "name": "index",
     "src": "assets/index.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js"
+    ]
+  },
+  "assets/main.js": {
+    "file": "js/Map-bundle.js",
+    "name": "Map",
+    "src": "assets/main.js",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js"
+    ],
+    "css": [
+      "assets/Map-SCXyeWCU.css"
+    ]
   }
 }

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-{% load static %}
+{% load django_vite %}
 <html>
 <head>
     <title>Getting Started with Django and Vite</title>
+    {% vite_hmr_client %}
 </head>
 <body>
-    <script type="module" src="{% static 'js/index-bundle.js' %}"></script>
+    {% vite_asset 'assets/index.js' %}
 </body>
 </html>
