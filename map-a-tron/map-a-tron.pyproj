@@ -3,7 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>map-a-tron</Name>
     <RootNamespace>map-a-tron</RootNamespace>
-    <InterpreterId>Global|PythonCore|3.10</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.14</InterpreterId>
     <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup>
@@ -45,7 +45,10 @@
     <Compile Include="TheBigCheese\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\GeoTIF.js" />
+    <Content Include="assets\Geotest.js" />
     <Content Include="TheBigCheese\templates\hello_vite.html" />
+    <Content Include="TheBigCheese\templates\GeoTIF.html" />
     <Content Include="vite.config.js" />
     <Content Include="assets\index.js" />
     <Content Include="assets\style.css" />

@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-D2aABDIb.js";import{n as t,t as n}from"./basedecoder-BFqpKvyD.js";var r;e((()=>{t(),r=class extends n{decodeBlock(e){return e}}}))();export{r as default};

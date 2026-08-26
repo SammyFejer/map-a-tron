@@ -29,5 +29,6 @@ urlpatterns = [
     # Uncomment the next line to enable the admin:
     path('admin/', admin.site.urls),
         path('', views.index, name='index'),
-        path('hello-vite/', TemplateView.as_view(template_name='hello_vite.html'))
+        path('Geo/', TemplateView.as_view(template_name='GeoTIF.html')),
+        path('hello-vite/', TemplateView.as_view(template_name='hello_vite.html')),
 ]

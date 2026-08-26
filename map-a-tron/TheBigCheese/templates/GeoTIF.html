@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load django_vite %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GeoTIFF with Overviews</title>
+    {% vite_hmr_client %}
+    
+    <style>
+        .map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map" class="map"></div>
+
+    {% vite_asset 'assets/GeoTIF.js' %}
+</body>
+</html>

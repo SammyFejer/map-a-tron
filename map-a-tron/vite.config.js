@@ -12,7 +12,9 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 'index': path.resolve(__dirname, './assets/index.js'),
-                'Map': path.resolve(__dirname, './assets/main.js')
+                'Map': path.resolve(__dirname, './assets/main.js'),
+                'GeoTiff': path.resolve(__dirname, './assets/GeoTIF.js'),
+                'Geo': path.resolve(__dirname, './assets/Geotest.js'),
             },
             output: {
                 // Output JS bundles to js/ directory with -bundle suffix

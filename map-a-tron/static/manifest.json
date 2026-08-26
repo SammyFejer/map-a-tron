@@ -1,7 +1,84 @@
 {
+  "_BaseTile-CJuUQF-e.js": {
+    "file": "assets/BaseTile-CJuUQF-e.js",
+    "name": "BaseTile",
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js"
+    ]
+  },
+  "_Tile-DA6xO2Hq.js": {
+    "file": "assets/Tile-DA6xO2Hq.js",
+    "name": "Tile",
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_BaseTile-CJuUQF-e.js"
+    ]
+  },
+  "_basedecoder-BFqpKvyD.js": {
+    "file": "assets/basedecoder-BFqpKvyD.js",
+    "name": "basedecoder",
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js"
+    ]
+  },
+  "_pako.esm-Dk-0euOk.js": {
+    "file": "assets/pako.esm-Dk-0euOk.js",
+    "name": "pako.esm",
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js"
+    ]
+  },
+  "_proj4-Q6TBo4pw.js": {
+    "file": "assets/proj4-Q6TBo4pw.js",
+    "name": "proj4",
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_BaseTile-CJuUQF-e.js"
+    ],
+    "dynamicImports": [
+      "node_modules/geotiff/dist-module/compression/raw.js",
+      "node_modules/geotiff/dist-module/compression/lzw.js",
+      "node_modules/geotiff/dist-module/compression/jpeg.js",
+      "node_modules/geotiff/dist-module/compression/deflate.js",
+      "node_modules/geotiff/dist-module/compression/packbits.js",
+      "node_modules/geotiff/dist-module/compression/lerc.js",
+      "node_modules/geotiff/dist-module/compression/zstd.js",
+      "node_modules/geotiff/dist-module/compression/webimage.js"
+    ],
+    "css": [
+      "assets/proj4-c_1sG1-7.css"
+    ]
+  },
+  "_proj4-c_1sG1-7.css": {
+    "file": "assets/proj4-c_1sG1-7.css",
+    "src": "_proj4-c_1sG1-7.css"
+  },
   "_rolldown-runtime-D2aABDIb.js": {
     "file": "assets/rolldown-runtime-D2aABDIb.js",
     "name": "rolldown-runtime"
+  },
+  "assets/GeoTIF.js": {
+    "file": "js/GeoTiff-bundle.js",
+    "name": "GeoTiff",
+    "src": "assets/GeoTIF.js",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_BaseTile-CJuUQF-e.js",
+      "_proj4-Q6TBo4pw.js"
+    ]
+  },
+  "assets/Geotest.js": {
+    "file": "js/Geo-bundle.js",
+    "name": "Geo",
+    "src": "assets/Geotest.js",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_BaseTile-CJuUQF-e.js",
+      "_Tile-DA6xO2Hq.js",
+      "_proj4-Q6TBo4pw.js"
+    ]
   },
   "assets/index.js": {
     "file": "js/index-bundle.js",
@@ -18,10 +95,95 @@
     "src": "assets/main.js",
     "isEntry": true,
     "imports": [
-      "_rolldown-runtime-D2aABDIb.js"
+      "_rolldown-runtime-D2aABDIb.js",
+      "_BaseTile-CJuUQF-e.js",
+      "_Tile-DA6xO2Hq.js"
     ],
     "css": [
       "assets/Map-SCXyeWCU.css"
+    ]
+  },
+  "node_modules/geotiff/dist-module/compression/deflate.js": {
+    "file": "assets/deflate-BooAvOpy.js",
+    "name": "deflate",
+    "src": "node_modules/geotiff/dist-module/compression/deflate.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_basedecoder-BFqpKvyD.js",
+      "_pako.esm-Dk-0euOk.js"
+    ]
+  },
+  "node_modules/geotiff/dist-module/compression/jpeg.js": {
+    "file": "assets/jpeg-kGAx1sUA.js",
+    "name": "jpeg",
+    "src": "node_modules/geotiff/dist-module/compression/jpeg.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_basedecoder-BFqpKvyD.js"
+    ]
+  },
+  "node_modules/geotiff/dist-module/compression/lerc.js": {
+    "file": "assets/lerc-DDzp-xsV.js",
+    "name": "lerc",
+    "src": "node_modules/geotiff/dist-module/compression/lerc.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_proj4-Q6TBo4pw.js",
+      "_basedecoder-BFqpKvyD.js",
+      "_pako.esm-Dk-0euOk.js"
+    ]
+  },
+  "node_modules/geotiff/dist-module/compression/lzw.js": {
+    "file": "assets/lzw-BN3z3O6_.js",
+    "name": "lzw",
+    "src": "node_modules/geotiff/dist-module/compression/lzw.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_basedecoder-BFqpKvyD.js"
+    ]
+  },
+  "node_modules/geotiff/dist-module/compression/packbits.js": {
+    "file": "assets/packbits-BzZcSO69.js",
+    "name": "packbits",
+    "src": "node_modules/geotiff/dist-module/compression/packbits.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_basedecoder-BFqpKvyD.js"
+    ]
+  },
+  "node_modules/geotiff/dist-module/compression/raw.js": {
+    "file": "assets/raw-CSuTYlJR.js",
+    "name": "raw",
+    "src": "node_modules/geotiff/dist-module/compression/raw.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_basedecoder-BFqpKvyD.js"
+    ]
+  },
+  "node_modules/geotiff/dist-module/compression/webimage.js": {
+    "file": "assets/webimage-BBTb7IKN.js",
+    "name": "webimage",
+    "src": "node_modules/geotiff/dist-module/compression/webimage.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_basedecoder-BFqpKvyD.js"
+    ]
+  },
+  "node_modules/geotiff/dist-module/compression/zstd.js": {
+    "file": "assets/zstd-C87PdyT1.js",
+    "name": "zstd",
+    "src": "node_modules/geotiff/dist-module/compression/zstd.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-D2aABDIb.js",
+      "_basedecoder-BFqpKvyD.js"
     ]
   }
 }
