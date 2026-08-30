@@ -1,13 +1,36 @@
-import 'ol/ol.css'; 
+//import 'ol/ol.css'; 
+//import Map from 'ol/Map.js';
+//import TileLayer from 'ol/layer/WebGLTile.js';
+//import GeoTIFF from 'ol/source/GeoTIFF.js';
+
+//const source = new GeoTIFF({
+//    sources: [
+//        {
+//            url: 'https://sammyfejer.github.io/map-a-tron/map-a-tron/Corang_COG.tif',
+            
+//        },
+//    ],
+//});
+
+//const map = new Map({
+//    target: 'map',
+//    layers: [
+//        new TileLayer({
+//            source: source,
+//        }),
+//    ],
+//    view: source.getView(),
+//});
+
 import Map from 'ol/Map.js';
+import { getView, withExtentCenter, withHigherResolutions } from 'ol/View.js';
 import TileLayer from 'ol/layer/WebGLTile.js';
 import GeoTIFF from 'ol/source/GeoTIFF.js';
 
 const source = new GeoTIFF({
     sources: [
         {
-            url: 'https://openlayers.org/data/raster/no-overviews.tif',
-            overviews: ['https://openlayers.org/data/raster/no-overviews.ovr.tif'],
+            url: 'https://sammyfejer.github.io/map-a-tron/map-a-tron/Corang_COG.tif',
         },
     ],
 });
@@ -19,5 +42,6 @@ const map = new Map({
             source: source,
         }),
     ],
-    view: source.getView(),
+    /* view: getView(source, withHigherResolutions(1), withExtentCenter()),*/
+   view: new Map().getView(),
 });
