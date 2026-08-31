@@ -30,7 +30,7 @@ import GeoTIFF from 'ol/source/GeoTIFF.js';
 const source = new GeoTIFF({
     sources: [
         {
-            url: 'https://sammyfejer.github.io/map-a-tron/map-a-tron/Corang_COG.tif',
+            url: 'gs://hugemunous_file/Corang_COG.tif',
         },
     ],
 });
@@ -45,3 +45,5 @@ const map = new Map({
     /* view: getView(source, withHigherResolutions(1), withExtentCenter()),*/
    view: new Map().getView(),
 });
+
+
