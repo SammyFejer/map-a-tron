@@ -30,7 +30,7 @@ import GeoTIFF from 'ol/source/GeoTIFF.js';
 const source = new GeoTIFF({
     sources: [
         {
-            url: 'gs://hugemunous_file/Corang_COG.tif',
+            url: 'https://storage.googleapis.com/hugemunous_file/Corang_COG.tif',
         },
     ],
 });
@@ -42,8 +42,8 @@ const map = new Map({
             source: source,
         }),
     ],
-    /* view: getView(source, withHigherResolutions(1), withExtentCenter()),*/
-   view: new Map().getView(),
+     view: getView(source, withHigherResolutions(1), withExtentCenter()),
+   /*view: new Map().getView(),*/
 });
 
 
