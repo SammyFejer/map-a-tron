@@ -5,7 +5,6 @@
     <RootNamespace>map-a-tron</RootNamespace>
     <InterpreterId>Global|PythonCore|3.10</InterpreterId>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -17,7 +16,7 @@
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
-    <LaunchProvider>Web launcher</LaunchProvider>
+    <LaunchProvider>Django launcher</LaunchProvider>
     <DjangoSettingsModule>map_a_tron.settings</DjangoSettingsModule>
     <WebBrowserUrl>http://localhost</WebBrowserUrl>
     <OutputPath>.</OutputPath>
@@ -41,9 +40,6 @@
     <Compile Include="TheBigCheese\apps.py" />
     <Compile Include="TheBigCheese\migrations\__init__.py" />
     <Compile Include="TheBigCheese\models.py" />
-    <Compile Include="TheBigCheese\proceisng.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="TheBigCheese\tests.py" />
     <Compile Include="TheBigCheese\views.py" />
     <Compile Include="TheBigCheese\__init__.py" />
@@ -52,7 +48,6 @@
     <Content Include="assets\GeoTIF.js" />
     <Content Include="assets\Geotest.js" />
     <Content Include="Corang_COG.tif" />
-    <Content Include="static\images\8927-4S_Endrick_GetlostMap_V15.tif" />
     <Content Include="TheBigCheese\templates\hello_vite.html" />
     <Content Include="TheBigCheese\templates\GeoTIF.html" />
     <Content Include="vite.config.js" />
