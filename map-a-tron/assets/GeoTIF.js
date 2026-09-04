@@ -57,8 +57,7 @@ const map = new Map({
     target: 'map',
     layers: [layer1, layer2],
     view: view,
-   //  view: source1.getView(/*(source, withHigherResolutions(1), withExtentCenter()*/),
-   ///*view: new Map().getView(),*/
+   // 
 });
 
 map.on('click', function (event) {

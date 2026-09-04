@@ -24,6 +24,7 @@ Including another URLconf
 # Uncomment next two lines to enable admin:
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 
 urlpatterns = [
     # Uncomment the next line to enable the admin:
@@ -31,4 +32,8 @@ urlpatterns = [
         path('', views.index, name='index'),
         path('Geo/', TemplateView.as_view(template_name='GeoTIF.html')),
         path('hello-vite/', TemplateView.as_view(template_name='hello_vite.html')),
+        path('rendertiff/', views.rendertiff, name='well'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

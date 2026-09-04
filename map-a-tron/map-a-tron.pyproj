@@ -40,6 +40,7 @@
     <Compile Include="TheBigCheese\apps.py" />
     <Compile Include="TheBigCheese\migrations\__init__.py" />
     <Compile Include="TheBigCheese\models.py" />
+    <Compile Include="TheBigCheese\proceisng.py" />
     <Compile Include="TheBigCheese\tests.py" />
     <Compile Include="TheBigCheese\views.py" />
     <Compile Include="TheBigCheese\__init__.py" />
@@ -50,6 +51,7 @@
     <Content Include="Corang_COG.tif" />
     <Content Include="TheBigCheese\templates\hello_vite.html" />
     <Content Include="TheBigCheese\templates\GeoTIF.html" />
+    <Content Include="TheBigCheese\templates\main\well.html" />
     <Content Include="vite.config.js" />
     <Content Include="assets\index.js" />
     <Content Include="assets\style.css" />
