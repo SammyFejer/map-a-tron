@@ -26,6 +26,12 @@ import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import TileLayer from 'ol/layer/WebGLTile.js';
 import GeoTIFF from 'ol/source/GeoTIFF.js';
+import VectorSource from 'ol/source/Vector';
+import Feature from 'ol/Feature.js';
+import Point from 'ol/geom/Point.js';
+import { fromLonLat } from 'ol/proj';
+import VectorLayer from 'ol/layer/Vector.js';
+import { toLonLat } from 'ol/proj';
 
 const source1 = new GeoTIFF({
     sources: [{ url: 'https://storage.googleapis.com/hugemunous_file/Corang_COG.tif' }],
@@ -53,7 +59,7 @@ const layer2 = new TileLayer({
 const view = new View({ center: [16696162.166265408, -4196098.137680702], zoom: 13, });
 
 
-const map = new Map({
+var map = new Map({
     target: 'map',
     layers: [layer1, layer2],
     view: view,
@@ -61,8 +67,22 @@ const map = new Map({
 });
 
 map.on('click', function (event) {
-    const coord = event.coordinate;
+    var coord = toLonLat(event.coordinate);
     console.log('Clicked coordinates:', coord);
+
+    var marker = new Feature({
+      geometry: new Point(6
+          fromLonLat(coord)
+      ),  // Cordinates of New York's Town Hall
+    });
+    var vectorSource = new VectorSource({
+      features: [marker]
+    });
+    var markerVectorLayer = new VectorLayer({
+      source: vectorSource,
+    });
+    map.addLayer(markerVectorLayer);
+    
 });
 
 
