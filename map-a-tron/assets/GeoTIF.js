@@ -32,9 +32,59 @@ import Point from 'ol/geom/Point.js';
 import { fromLonLat } from 'ol/proj';
 import VectorLayer from 'ol/layer/Vector.js';
 import { toLonLat } from 'ol/proj';
+import { fromUrl } from 'geotiff';
+
+
+ async function getTiff() {
+
+    const tiff = await fromUrl('https://storage.googleapis.com/hugemunous_file/Corang_COG.tif');
+
+    const image = await tiff.getImage();
+
+    const width = image.getWidth();
+    const hight = image.getHeight();
+     
+
+
+    const bbox = image.getBoundingBox();
+
+    var resX = ((bbox[2] - bbox[0]) / width);
+    var resY = ((bbox[3] - bbox[1]) / hight);
+
+
+    return { resX, resY, bbox };
+;   
+   
+
+
+}
+
+function coordtopix(coord) {
+
+    const { resX, resY, bbox } = await getTiff();
+    
+    var bboxcoordmin = toLonLat([bbox[0], bbox[1]]);
+    var bboxcoordmax = toLonLat([bbox[2], bbox[3]]);
+    
+
+    var X = Math.floor((bbox[0] - coord[0]) / resX);
+    var Y = Math.floor((coord[1] - bbox[3]) / resY);
+
+
+}
+
+const vectorSource = new VectorSource({
+    
+});
+const markerVectorLayer = new VectorLayer({
+    source: vectorSource,
+});
+
 
 const source1 = new GeoTIFF({
-    sources: [{ url: 'https://storage.googleapis.com/hugemunous_file/Corang_COG.tif' }],
+    sources: [{ url: 'https://storage.googleapis.com/hugemunous_file/Corang_COG.tif' },
+        
+    ],
 });
 
 const source2 = new GeoTIFF({
@@ -56,33 +106,80 @@ const layer2 = new TileLayer({
     source: source2,
 });
 
-const view = new View({ center: [16696162.166265408, -4196098.137680702], zoom: 13, });
+const view = new View({ center: [16706278.65556357, -4205421.554828521], zoom: 13, });
+
 
 
 var map = new Map({
     target: 'map',
-    layers: [layer1, layer2],
+    layers: [layer1, layer2, markerVectorLayer],
     view: view,
-   // 
+    // 16703375.910809841, -4207349.395254885
 });
 
-map.on('click', function (event) {
-    var coord = toLonLat(event.coordinate);
-    console.log('Clicked coordinates:', coord);
 
+//const marker = new Feature({
+//    geometry: new Point(
+//        [16703375.910809841, -4207349.395254885],
+//    ),
+//});
+//const vectorSource = new VectorSource({
+//    features: [marker]
+//});
+//const markerVectorLayer = new VectorLayer({
+//    source: vectorSource,
+//});
+//map.addLayer(markerVectorLayer);
+
+map.on('click', async function (event) {
+    var coord = (event.coordinate);
+    
+    console.log('Clicked coordinates:', coord);
+    const {resX, resY, bbox} = await getTiff();
+    console.log('get tiff:', resX, resY, bbox);
+    var bboxcoordmin = toLonLat([bbox[0], bbox[1]]);
+    var bboxcoordmax = toLonLat([bbox[2], bbox[3]]);
+    console.log('box min:', bboxcoordmin);
+    console.log('box max:', bboxcoordmax);
+    
+    var X = Math.floor((bbox[0] - coord[0]) / resX);
+    var Y = Math.floor((coord[1] - bbox[3]) / resY);
+    var Xco = -((-2045 * resX) - bbox[0]);
+    var Yco = ((-3190 * resY) + bbox[3]);
+    console.log('coord from pix:', Xco, Yco );
+
+    
+
+    console.log('pixel:', X, Y);
     var marker = new Feature({
-      geometry: new Point(6
-          fromLonLat(coord)
+      geometry: new Point(
+          (coord)
       ),  // Cordinates of New York's Town Hall
     });
-    var vectorSource = new VectorSource({
-      features: [marker]
-    });
-    var markerVectorLayer = new VectorLayer({
-      source: vectorSource,
-    });
-    map.addLayer(markerVectorLayer);
+    vectorSource.addFeature(marker);
     
+   
+
+    
+    const vectorSources = markerVectorLayer.getSource();
+
+    const allFeatures = vectorSources.getFeatures();
+
+    var start = allFeatures[0];
+
+    var geometry = allFeatures[0].getGeometry();
+
+    if (geometry && geometry.getType() === 'Point') {
+        var coordinates = geometry.getCoordinates(); 
+        var startpix = coordtopix(coordinates);
+    } 
+
+    var finish = allFeatures.at[-1];
+
+    
+
+    
+   
 });
 
 

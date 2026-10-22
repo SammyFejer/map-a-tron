@@ -8,6 +8,25 @@ import os
 import cv2
 from django.conf import settings
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+
+from .forms import DocumentForm
+
+
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            document = form.save()
+            return render(request,
+                        'main/upload_success.html',
+                        {'document':document}
+                    )
+              			
+    else:
+        form = DocumentForm()
+    return render(request, 'main/upload.html', {'form': form})
 
 def index(request):
     template = "main/index.html"

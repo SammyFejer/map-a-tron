@@ -107,6 +107,20 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+ 
+
+# storages = {
+#     "default": {
+#         "backend": "storages.backends.gcloud.googlecloudstorage",
+#         "options": {
+#            "bucket_name" : 'hugemunous_file',
+#            'bucket_id' : 'project-7f6715bf-9f54-4b9e-87b',
+#            "default_acl": "publicread",
+           
+
+#         },
+#     },
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -116,10 +130,15 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = '/static/'
-MEDIA_URL =  '/images/'
+MEDIA_URL =  '/images/' 
+MEDIA_ROOT = '/media/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS= [
     

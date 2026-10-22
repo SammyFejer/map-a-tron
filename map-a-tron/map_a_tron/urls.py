@@ -33,7 +33,9 @@ urlpatterns = [
         path('Geo/', TemplateView.as_view(template_name='GeoTIF.html')),
         path('hello-vite/', TemplateView.as_view(template_name='hello_vite.html')),
         path('rendertiff/', views.rendertiff, name='well'),
-]
+        
+        path('upload/', views.upload_file, name='upload_file'), 
+] 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
