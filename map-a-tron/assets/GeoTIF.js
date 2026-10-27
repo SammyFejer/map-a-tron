@@ -35,6 +35,7 @@ import { toLonLat } from 'ol/proj';
 import { fromUrl } from 'geotiff';
 
 
+
  async function getTiff() {
 
     const tiff = await fromUrl('https://storage.googleapis.com/hugemunous_file/Corang_COG.tif');
@@ -59,19 +60,43 @@ import { fromUrl } from 'geotiff';
 
 }
 
-function coordtopix(coord) {
 
-    const { resX, resY, bbox } = await getTiff();
-    
-    var bboxcoordmin = toLonLat([bbox[0], bbox[1]]);
-    var bboxcoordmax = toLonLat([bbox[2], bbox[3]]);
-    
+async function getData(loglatcoords) {
 
-    var X = Math.floor((bbox[0] - coord[0]) / resX);
-    var Y = Math.floor((coord[1] - bbox[3]) / resY);
+    const url = new URL('https://portal.opentopography.org/API/v1/elevation');
 
+    const params = new URLSearchParams();
+    url.searchParams.append('longitude', loglatcoords[0]);
+    url.searchParams.append('latitude', loglatcoords[1]);
+    url.searchParams.append("API_Key", '0c79ed189e921db0403e68b6114127e9');
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
 
+        const result = await response.json();
+        console.log(result);
+    } catch (error) {
+        console.error(error.message);
+    }
 }
+
+
+
+//function coordtopix(coord) {
+
+//    const { resX, resY, bbox } = await getTiff();
+    
+//    var bboxcoordmin = toLonLat([bbox[0], bbox[1]]);
+//    var bboxcoordmax = toLonLat([bbox[2], bbox[3]]);
+    
+
+//    var X = Math.floor((bbox[0] - coord[0]) / resX);
+//    var Y = Math.floor((coord[1] - bbox[3]) / resY);
+
+
+//}
 
 const vectorSource = new VectorSource({
     
@@ -136,25 +161,21 @@ map.on('click', async function (event) {
     
     console.log('Clicked coordinates:', coord);
     const {resX, resY, bbox} = await getTiff();
-    console.log('get tiff:', resX, resY, bbox);
-    var bboxcoordmin = toLonLat([bbox[0], bbox[1]]);
-    var bboxcoordmax = toLonLat([bbox[2], bbox[3]]);
-    console.log('box min:', bboxcoordmin);
-    console.log('box max:', bboxcoordmax);
+    
     
     var X = Math.floor((bbox[0] - coord[0]) / resX);
     var Y = Math.floor((coord[1] - bbox[3]) / resY);
     var Xco = -((-2045 * resX) - bbox[0]);
     var Yco = ((-3190 * resY) + bbox[3]);
-    console.log('coord from pix:', Xco, Yco );
-
-    
+    console.log('coord from pix:', Xco, Yco);
+    const loglatcoords = toLonLat(coord);
+    await getData(loglatcoords);
 
     console.log('pixel:', X, Y);
     var marker = new Feature({
       geometry: new Point(
           (coord)
-      ),  // Cordinates of New York's Town Hall
+      ),  
     });
     vectorSource.addFeature(marker);
     
@@ -169,10 +190,10 @@ map.on('click', async function (event) {
 
     var geometry = allFeatures[0].getGeometry();
 
-    if (geometry && geometry.getType() === 'Point') {
-        var coordinates = geometry.getCoordinates(); 
-        var startpix = coordtopix(coordinates);
-    } 
+    //if (geometry && geometry.getType() === 'Point') {
+    //    var coordinates = geometry.getCoordinates(); 
+    //    var startpix = coordtopix(coordinates);
+    //} 
 
     var finish = allFeatures.at[-1];
 
